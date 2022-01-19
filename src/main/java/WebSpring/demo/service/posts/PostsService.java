@@ -4,7 +4,7 @@ import WebSpring.demo.controller.dto.PostsResponseDto;
 import WebSpring.demo.controller.dto.PostsSaveRequestDto;
 import WebSpring.demo.controller.dto.PostsUpdateRequestDto;
 import WebSpring.demo.domain.posts.Posts;
-import WebSpring.demo.domain.posts.PostsRepository;
+import WebSpring.demo.repository.PostsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
