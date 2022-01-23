@@ -18,7 +18,7 @@ import org.springframework.http.ResponseEntity;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
+//Transactional -> 이것때문에 오류 ... 이유는??
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostsApiControllerTest {
 
@@ -75,6 +75,7 @@ public class PostsApiControllerTest {
                 .content(expectedContent)
                 .build();
 
+
         String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
@@ -87,6 +88,7 @@ public class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         Assertions.assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         Assertions.assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+
     }
 
 }

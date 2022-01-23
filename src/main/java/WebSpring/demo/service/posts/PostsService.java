@@ -6,6 +6,7 @@ import WebSpring.demo.controller.dto.PostsUpdateRequestDto;
 import WebSpring.demo.domain.posts.Posts;
 import WebSpring.demo.repository.PostsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,10 +18,11 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto) {
+    public Long save(PostsSaveRequestDto requestDto) {  //return id값
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
+    @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() ->
