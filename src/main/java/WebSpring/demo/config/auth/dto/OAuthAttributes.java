@@ -1,4 +1,3 @@
-/*
 package WebSpring.demo.config.auth.dto;
 
 import WebSpring.demo.domain.user.Role;
@@ -52,4 +51,3 @@ public class OAuthAttributes {
 }
 
 
- */

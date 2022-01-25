@@ -1,4 +1,3 @@
-/*
 package WebSpring.demo.config.auth;
 
 import WebSpring.demo.domain.user.Role;
@@ -37,5 +36,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     }
 }
 
-
- */

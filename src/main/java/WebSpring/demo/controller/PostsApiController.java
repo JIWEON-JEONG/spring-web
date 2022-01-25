@@ -28,4 +28,9 @@ public class PostsApiController {
         return postsService.findById(id);
     }
 
+    @DeleteMapping("/api/v1/posts/{id}")    //등록되어 있는 유저 정보를 삭제하기 위한 로직
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;  // 굳이 id를 리턴할 필요가 있을까?
+    }
 }

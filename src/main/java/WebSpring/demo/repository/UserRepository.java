@@ -1,4 +1,3 @@
-/*
 package WebSpring.demo.repository;
 
 import WebSpring.demo.domain.user.User;
@@ -13,4 +12,4 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByEmail(String Email);
 }
 
- */
+

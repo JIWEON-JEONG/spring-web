@@ -1,4 +1,3 @@
-/*
 package WebSpring.demo.config.auth;
 
 import WebSpring.demo.config.auth.dto.OAuthAttributes;
@@ -63,6 +62,3 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         return userRepository.save(user);
     }
 }
-
-
- */

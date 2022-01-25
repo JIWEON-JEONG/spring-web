@@ -1,4 +1,3 @@
-/*
 package WebSpring.demo.config.auth.dto;
 
 import WebSpring.demo.domain.user.User;
@@ -21,4 +20,3 @@ public class SessionUser implements Serializable {
 }
 
 
- */
