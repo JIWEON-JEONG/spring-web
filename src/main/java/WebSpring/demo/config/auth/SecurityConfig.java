@@ -1,15 +1,18 @@
 package WebSpring.demo.config.auth;
 
 import WebSpring.demo.domain.user.Role;
+import WebSpring.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @RequiredArgsConstructor
-@EnableWebSecurity
+@EnableWebSecurity  //spring security 설정들을 활성화 시켜준다.
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+
     private final CustomOAuth2UserService customOAuth2UserService;
+    private final UserRepository userRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
