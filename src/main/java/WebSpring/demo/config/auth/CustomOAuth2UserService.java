@@ -18,8 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
 //구글 로그인 이후 가져온 사용자의 정보(email,name,picture) 들을 기반으로 가입 및 정보수정, 세션저장등의 기능을 제공
+//[로그인 후 처리할 작업]
 @RequiredArgsConstructor
 @Service
+//OAuth2UserService : 최종 사용자의 속성을 가져온다. -> Default 값은 최종 userInfo 엔드포인트에서 사용자 속성 요청.
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
@@ -27,6 +29,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final HttpSession httpSession;
     @Override
 
+    // CumsomOAuth2UserService 등록 메소드
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         //표준 OAuth 2.0 공급자의 경우 UserInfo 응답에서 사용자 이름에 액세스하는 데 사용되는 속성 이름이 필요하므로 를 통해 사용할 수 있어야 합니다
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
@@ -56,9 +59,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     //구글 사용자 정보가 업데이트 되었을때 . (ex) 사용자의 이름이나 프로필 사진등)
     public User saveOrUpdate(OAuthAttributes attributes){
-        User user = userRepository.findByEmail(attributes.getEmail())
+        User user = userRepository.findByEmail(attributes.getEmail())   //findByEmail 기능을 잘 모르겠음
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
-                .orElse(attributes.toEntity());
+                .orElse(attributes.toEntity()); //orElse 항상 불리는 키워드
         return userRepository.save(user);
     }
 }

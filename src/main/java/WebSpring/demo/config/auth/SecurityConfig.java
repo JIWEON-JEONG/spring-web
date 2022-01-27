@@ -1,5 +1,6 @@
 package WebSpring.demo.config.auth;
 
+import WebSpring.demo.config.auth.CustomOAuth2UserService;
 import WebSpring.demo.domain.user.Role;
 import WebSpring.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,7 @@
 package WebSpring.demo.controller;
 
 //import WebSpring.demo.config.auth.dto.SessionUser;
+import WebSpring.demo.config.auth.LoginUser;
 import WebSpring.demo.config.auth.dto.SessionUser;
 import WebSpring.demo.controller.dto.PostsResponseDto;
 import WebSpring.demo.service.posts.PostsService;
@@ -17,16 +18,17 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
+    //private final HttpSession httpSession;
 
     @GetMapping("/")
     //model : 서버 템플릿 엔진에서 사용 할 수 있는 객체를 저장 할 수 있다.
     //findAllDesc() 로 가져온 결과를 posts로 index.mustache에 전달한다.
-    public String index(Model model){
+    //어느 컨트롤러 든지 @LoginUser만 사용하면 세션정보를 가져올 수 있게 되었다.
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if(user != null){
+        //SessionUser user = user.getAttribute("user");
+        if (user != null) {
             model.addAttribute("userName", user.getName());
         }
         return "index";
