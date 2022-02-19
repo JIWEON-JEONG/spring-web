@@ -29,7 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 //나머지 URL들은 모드 인증된 즉, 로그인한 사용자들에게 허용
                 .anyRequest().authenticated()
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout().invalidateHttpSession(true)
+                .logoutSuccessUrl("/")
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
                 .and()
                 //OAuth2 로그인 기능에 대한 여러 설정 진입점
                 .oauth2Login()
@@ -37,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .userInfoEndpoint()
                 //소셜 로그인 성공시, 후속조치를 진행할 UserService 인터페이스의 구현체를 등록한다.
                 .userService(customOAuth2UserService);
+
     }
 }
 
